@@ -5,6 +5,8 @@ import Card from '../Card/Card.jsx'
 
 export default function Main() {
 
+    const firstLanguage = languages[0];
+
     return (
         <section>
             <div className='container'>
@@ -18,11 +20,7 @@ export default function Main() {
                 </ul>
             </div>
             <div className='container'>
-                {languages.map((language) => (
-                    <div key={language.id} className='cards'>
-                        <Card title={language.title} description={language.description} />
-                    </div>
-                ))}
+                <Card title={firstLanguage.title} description={firstLanguage.description} />
             </div>
         </section>
     )
