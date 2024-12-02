@@ -1,11 +1,16 @@
-import { languages } from '../../languages.js'
-import Button from '../Button/Button.jsx'
-import Card from '../Card/Card.jsx'
+import { useState } from 'react';
+import { languages } from '../../languages.js';
+import Button from '../Button/Button.jsx';
+import Card from '../Card/Card.jsx';
 
 
 export default function Main() {
+    const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
 
-    const firstLanguage = languages[0];
+
+    const handleButtonClick = (language) => {
+        setSelectedLanguage(language);
+    };
 
     return (
         <section>
@@ -13,16 +18,21 @@ export default function Main() {
                 <ul className='list'>
                     {languages.map((language) => (
                         <li key={language.id}>
-                            <Button title={language.title} />
+                            <Button
+                                title={language.title}
+                                onClick={() => handleButtonClick(language)}
+                            />
                         </li>
                     ))}
-
                 </ul>
             </div>
+
             <div className='container'>
-                <Card title={firstLanguage.title} description={firstLanguage.description} />
+                <Card
+                    title={selectedLanguage.title}
+                    description={selectedLanguage.description}
+                />
             </div>
         </section>
-    )
-
+    );
 }
